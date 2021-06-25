@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Bscotch Patch Deployer</h2>
+
+<p>Install the new patch on which platform?</p>
+
+<button onclick="myFunction1()">Switch</button>
+
+
+<p id="demo"></p>
+
+<script>
+    const path = require("path");
+    const childProcess = require("child_process");
+    const semver = require('semver');
+    const fs = require('fs');
+
+    //list all of the files in the folder
+    const files = fs.readdirSync("C:/Users/Jordan/Dropbox (Bscotch)/GamePipe/crashlands-2/develop")
+    //sort all of the files by version #
+    semver.sort(files);
+
+    //return the last file in the sorted list
+    NewPatch = files.pop();
+
+    //concatenate the path 
+    const stitchedUpFilePath = path.join(
+        "C:/",
+        "Users/",
+        "Jordan",
+        "DropBox (Bscotch)/",
+        "GamePipe/",
+        "crashlands-2/",
+        "develop/",
+        NewPatch + "/",
+        "switch/",
+        "default/",
+        NewPatch + ".nsp"
+);
+
+const executablePath = stitchedUpFilePath.replace(/\\/g, "/");
+console.log(executablePath);
+
+document.getElementById("demo").innerHTML = NewPatch;  
+
+function myFunction1() {
+    childProcess.exec(executablePath);
+        document.getElementById("demo").innerHTML = 'Installing';
+}
+</script>
+
+</body>
+</html>
