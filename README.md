@@ -23,4 +23,4 @@ Now you'll need the path to the GamePipe folder again.
 
 - The terminal command to enter is: `nodemon --watch <Path to GamePipe>`
 
-The script should fire immediately and again every time the GamePipe folder is modified, as long as VScode is still running.
+The script should fire immediately and again every time a folder in the GamePipe is modified, as long as VScode is still running.
